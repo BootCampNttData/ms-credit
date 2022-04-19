@@ -17,11 +17,14 @@ public class CreditController {
         return service.findAll();
     }
 
-    @GetMapping("/find/{num}")
-    public Flux<Credit> findByClientId(@PathVariable("id") String id){
-        return service.findByClientId(id);
+    @GetMapping("/find/{clientId}")
+    public Flux<Credit> findByClientId(@PathVariable("clientId") String clientId){
+        return service.findByClientId(clientId);
     }
-
+    @GetMapping("/find/{creditId}")
+    public Mono<Credit> findByCreditId(@PathVariable("creditId") String creditId){
+        return service.findByCreditId(creditId);
+    }
     @PostMapping
     public Mono<Credit> create(@RequestBody Credit credit){
         return service.create(credit);

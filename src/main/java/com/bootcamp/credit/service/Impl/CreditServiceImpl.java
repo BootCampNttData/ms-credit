@@ -42,11 +42,11 @@ public class CreditServiceImpl implements CreditService {
     }
 
     @Override
-    public Flux<Credit> findByClientId(String id) {
-        return repository.findByClientId(id);
+    public Flux<Credit> findByClientId(String clientId) {
+        return repository.findByClientId(clientId);
     }
 
-    public Mono<Credit> findByCreditId(String id) {
-        return repository.findByCreditId(id);
+    public Mono<Credit> findByCreditId(String creditId) {
+        return repository.findByCreditId(creditId);
     }
 }

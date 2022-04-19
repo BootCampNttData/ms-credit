@@ -7,8 +7,8 @@ import reactor.core.publisher.Mono;
 public interface CreditService {
     Flux<Credit> findAll();
     Mono<Credit> create(Credit credit);
-    Flux<Credit> findByClientId(String id);
-    Mono<Credit> findByCreditId(String id);
+    Flux<Credit> findByClientId(String clientId);
+    Mono<Credit> findByCreditId(String creditId);
     Mono<Credit> update(Credit credit);
     Mono<Credit> deleteById(String id);
     Mono delete(Credit credit);
