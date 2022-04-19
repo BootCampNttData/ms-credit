@@ -41,7 +41,7 @@ public class CreditMovementServiceImpl implements CreditMovementService {
     }
 
     @Override
-    public Flux<CreditMovement> findByCreditId(String id) {
-        return repository.findByCreditId(id);
+    public Flux<CreditMovement> findByCreditId(String idCredit) {
+        return repository.findByCreditId(idCredit);
     }
 }

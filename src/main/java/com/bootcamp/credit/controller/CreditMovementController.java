@@ -2,8 +2,6 @@ package com.bootcamp.credit.controller;
 
 import com.bootcamp.credit.model.CreditMovement;
 import com.bootcamp.credit.service.CreditMovementService;
-import com.bootcamp.credit.model.CreditMovement;
-import com.bootcamp.credit.service.CreditMovementService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
@@ -19,9 +17,9 @@ public class CreditMovementController {
         return service.findAll();
     }
 
-    @GetMapping("/find/{num}")
-    public Flux<CreditMovement> getByIdCredit(@PathVariable("num") String num){
-        return service.findByCreditId(num);
+    @GetMapping("/find/{idCredit}")
+    public Flux<CreditMovement> getByIdCredit(@PathVariable("idCredit") String idCredit){
+        return service.findByCreditId(idCredit);
     }
 
     @PostMapping
