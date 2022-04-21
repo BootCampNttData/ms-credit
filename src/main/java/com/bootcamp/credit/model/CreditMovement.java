@@ -8,7 +8,7 @@ public class CreditMovement {
     @Id
     private String id;
     private String creditId;
-    private Date movementDate;
+    private String movementDate;
     private Double amount;
 }
     

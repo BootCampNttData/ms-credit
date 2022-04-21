@@ -1,6 +1,8 @@
 package com.bootcamp.credit.controller;
 
 import com.bootcamp.credit.model.Credit;
+import com.bootcamp.credit.model.CreditMovement;
+import com.bootcamp.credit.service.CreditMovementService;
 import com.bootcamp.credit.service.CreditService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -12,8 +14,9 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 public class CreditController {
     public final CreditService service;
+    public final CreditMovementService creditMovementService;
     @GetMapping
-    public Flux<Credit> getAll(){
+    public Flux<Credit> getAllCredits(){
         return service.findAll();
     }
 
@@ -41,8 +44,32 @@ public class CreditController {
     }
 
     @DeleteMapping("/byId/{id}")
-    public Mono<Credit> deleteById(@RequestBody String id){
+    public Mono<Credit> deleteCreditById(@RequestBody String id){
         return service.deleteById(id);
     }
+
+/** ******************************************************************************************************/
+    @GetMapping("/movement")
+    public Flux<CreditMovement> getAllMovements(){
+        return creditMovementService.findAll();
+    }
+
+    @GetMapping("/movement/byId/{idCredit}")
+    public Flux<CreditMovement> getByIdCredit(@PathVariable("idCredit") String idCredit){
+        return creditMovementService.findByCreditId(idCredit);
+    }
+
+    @PostMapping("/movement")
+    public Mono<CreditMovement> create(@RequestBody CreditMovement creditMovement){
+        return creditMovementService.create(creditMovement);
+    }
+
+    @DeleteMapping("/movement/byId/{id}")
+    public Mono<CreditMovement> deleteMovementById(@RequestBody String id){
+        return creditMovementService.deleteById(id);
+    }
+
+
+
 
 }
