@@ -28,6 +28,21 @@ public class CreditController {
     public Mono<Credit> findByCreditId(@PathVariable("creditId") String creditId){
         return service.findByCreditId(creditId);
     }
+
+    /**
+     * Obtiene una lista de los de Creditos que posea el Cliente segun su Documento
+     * @param clientId Documento del Cliente (RUC)
+     * @return Lista con los Creditos pertenecientes al Documento
+     */
+    @GetMapping("/findCreditCardByClientRuc/{clientRuc}")
+    public Flux<String> findAcountsByClientId(@PathVariable("clientId") String clientId) {
+        var accounts = service.findByClientId(clientId);
+        var lst = accounts.map(acc -> {
+            return acc.getCreditId();
+        });
+        return lst;
+    }
+
     @PostMapping
     public Mono<Credit> create(@RequestBody Credit credit){
         return service.create(credit);
@@ -68,8 +83,5 @@ public class CreditController {
     public Mono<CreditMovement> deleteMovementById(@RequestBody String id){
         return creditMovementService.deleteById(id);
     }
-
-
-
 
 }
