@@ -4,6 +4,7 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.Date;
 
 
 @Data
@@ -15,8 +16,9 @@ public class Credit {
     private String  clientId;
     private String  creditId;
     private String  clientType;
-    private String  creditDate;
+    private Date    creditDate;
     private Double  loanAmount;
     private Integer loanTermInMonths;
     private Double  annualInterestRate;
+    private Integer paymentDay;
 }
